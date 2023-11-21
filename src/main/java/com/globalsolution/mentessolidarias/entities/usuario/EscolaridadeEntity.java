@@ -1,5 +1,6 @@
 package com.globalsolution.mentessolidarias.entities.usuario;
 
+import com.globalsolution.mentessolidarias.controller.usuario.dto.DadosCadastroEscolaridade;
 import com.globalsolution.mentessolidarias.entities.enuns.Escolaridade;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,4 +20,8 @@ public class EscolaridadeEntity {
     @Column(name = "escolaridade")
     @Enumerated(EnumType.STRING)
     private Escolaridade escolaridade;
+
+    public EscolaridadeEntity(DadosCadastroEscolaridade dados) {
+        this.setEscolaridade(dados.escolaridade());
+    }
 }

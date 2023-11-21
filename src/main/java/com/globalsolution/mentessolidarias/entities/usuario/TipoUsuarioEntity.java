@@ -1,5 +1,6 @@
 package com.globalsolution.mentessolidarias.entities.usuario;
 
+import com.globalsolution.mentessolidarias.controller.usuario.dto.DadosCadastroTipoUsuario;
 import com.globalsolution.mentessolidarias.entities.enuns.TipoUsuario;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,4 +20,8 @@ public class TipoUsuarioEntity {
     @Column(name = "tipo_usuario")
     @Enumerated
     private TipoUsuario tipoUsuario;
+
+    public TipoUsuarioEntity(DadosCadastroTipoUsuario dados) {
+        this.setTipoUsuario(dados.tipoUsuario());
+    }
 }
