@@ -1,5 +1,6 @@
 package com.globalsolution.mentessolidarias.entities.documentos.receita;
 
+import com.globalsolution.mentessolidarias.controller.documentos.dto.DadosCadastroMedicamento;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,4 +29,10 @@ public class MedicamentoEntity {
     @Column(name = "principio_ativo")
     private String principioAtivo;
 
+    public MedicamentoEntity(DadosCadastroMedicamento dados) {
+        this.setNome(dados.nome());
+        this.setFabricante(dados.fabricante());
+        this.setViaAdministracao(dados.viaAdministracao());
+        this.setPrincipioAtivo(dados.principioAtivo());
+    }
 }

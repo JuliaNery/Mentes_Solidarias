@@ -3,6 +3,7 @@ package com.globalsolution.mentessolidarias.entities.usuario;
 import com.globalsolution.mentessolidarias.entities.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
 
@@ -20,18 +21,17 @@ public class UsuarioEntity {
     @Column(name = "nome")
     private String nome;
     @Column(name = "genero")
-    @Enumerated(EnumType.STRING)
     private String genero;
     @Column(name = "num_telefone")
     private Long telefone;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_escolaridade")
-    private EscolaridadeEntity escolaridadeEntity;
     @Column(name = "dt_nasc")
     private LocalDate dtNasc;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_escolaridade")
+    private EscolaridadeEntity escolaridade;
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_usuario")
-    private TipoUsuarioEntity tipoUsuarioEntity;
+    private TipoUsuarioEntity tipoUsuario;
     @Column(name = "email")
     private String email;
     @Column(name = "senha")

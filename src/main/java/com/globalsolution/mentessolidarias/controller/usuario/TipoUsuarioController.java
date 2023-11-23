@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping(value = "/tipoUsuario")
+@RequestMapping(value = "/tipousuario")
 public class TipoUsuarioController {
     @Autowired
     private TipoUsuarioRepository tipoUsuarioRepository;

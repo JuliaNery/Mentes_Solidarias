@@ -1,10 +1,11 @@
 package com.globalsolution.mentessolidarias.entities.documentos.receita;
 
+import com.globalsolution.mentessolidarias.controller.documentos.dto.DadosCadastroReceitaMedicamento;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Data
-@Entity
+@Entity(name = "assoc_receita_medicamento")
 @Table(name = "assoc_receita_medicamento")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class ReceitaMedicamentoEntity {
     @Column(name = "descricao")
     private String descricao;
     @Column(name = "freq_duracao")
-    private String freqAdmin;
+    private String frequenciaAdmin;
     @Column(name = "duracao_admin")
     private String duracaoAdmin;
 
@@ -30,5 +31,6 @@ public class ReceitaMedicamentoEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_medicamento")
     private MedicamentoEntity medicamento;
+
 
 }

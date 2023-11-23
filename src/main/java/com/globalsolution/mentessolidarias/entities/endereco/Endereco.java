@@ -18,13 +18,13 @@ public class Endereco {
     private String numero;
     private String complemento;
     private String cidade;
-    private String uf;
+    private String estado;
 
     public Endereco(DadosEndereco dados) {
         this.logradouro = dados.logradouro();
         this.bairro = dados.bairro();
         this.cep = dados.cep();
-        this.uf = dados.uf();
+        this.estado = dados.estado();
         this.cidade = dados.cidade();
         this.numero = dados.numero();
         this.complemento = dados.complemento();
@@ -34,7 +34,7 @@ public class Endereco {
         this.logradouro = dados.getLogradouro();
         this.bairro = dados.getBairro();
         this.cep = dados.getCep();
-        this.uf = dados.getUf();
+        this.estado = dados.getEstado();
         this.cidade = dados.getCidade();
         this.numero = dados.getNumero();
         this.complemento = dados.getComplemento();
@@ -50,8 +50,8 @@ public class Endereco {
         if (dados.cep() != null) {
             this.cep = dados.cep();
         }
-        if (dados.uf() != null) {
-            this.uf = dados.uf();
+        if (dados.estado() != null) {
+            this.estado = dados.estado();
         }
         if (dados.cidade() != null) {
             this.cidade = dados.cidade();

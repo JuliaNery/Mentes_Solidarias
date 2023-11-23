@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class ConsultaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

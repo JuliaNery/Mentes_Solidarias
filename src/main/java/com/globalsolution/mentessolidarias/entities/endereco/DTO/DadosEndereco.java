@@ -17,5 +17,5 @@ public record DadosEndereco(
         @NotBlank
         String cidade,
         @NotBlank
-        String uf) {
+        String estado) {
 }
