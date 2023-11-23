@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public record DadosCadastroConsulta(
         @NotNull
         Long cpfPaciente,
-        @NotNull
+
         Long cpfProfissional,
         @NotNull
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
