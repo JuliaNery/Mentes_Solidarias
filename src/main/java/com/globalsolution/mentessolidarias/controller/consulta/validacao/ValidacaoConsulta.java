@@ -3,6 +3,7 @@ package com.globalsolution.mentessolidarias.controller.consulta.validacao;
 import com.globalsolution.mentessolidarias.controller.consulta.dto.DadosCadastroConsulta;
 import com.globalsolution.mentessolidarias.controller.consulta.dto.DadosDetalhamentoConsulta;
 import com.globalsolution.mentessolidarias.entities.consulta.ConsultaEntity;
+import com.globalsolution.mentessolidarias.entities.enuns.TipoUsuario;
 import com.globalsolution.mentessolidarias.entities.usuario.profissional.ProfissionalEntity;
 import com.globalsolution.mentessolidarias.repositories.consulta.ConsultaRepository;
 import com.globalsolution.mentessolidarias.repositories.usuario.AgendaRepository;
@@ -11,6 +12,8 @@ import com.globalsolution.mentessolidarias.repositories.usuario.PacienteReposito
 import com.globalsolution.mentessolidarias.repositories.usuario.ProfissionalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 
 @Service
 public class ValidacaoConsulta {
@@ -31,11 +34,10 @@ public class ValidacaoConsulta {
 
     public DadosDetalhamentoConsulta cadastrar(DadosCadastroConsulta dados){
         var paciente = pacienteRepository.getReferenceById(dados.cpfPaciente());
-//        var profissional = profissionalRepository.getReferenceById(dados.cpfProfissional());
-
+        var profissional = escolherMedico(dados.data(), dados.especialidade(), dados.genero());
         var consulta = ConsultaEntity.builder()
                 .paciente(paciente)
-//                .profissional(profissional)
+                .profissional(profissional)
                 .data(dados.data())
                 .link(dados.link())
                 .build();
@@ -43,9 +45,11 @@ public class ValidacaoConsulta {
         return new DadosDetalhamentoConsulta(consulta);
     }
 
-    private ProfissionalEntity escolherMedico(DadosCadastroConsulta dados) {
+    private ProfissionalEntity escolherMedico(LocalDateTime data, TipoUsuario especialidade, String genero) {
 
 
-        return profissionalRepository.getProfissionalLivre(dados.cpfProfissional());
+        var profissional = profissionalRepository.getProfissionalLivre(data, especialidade, genero);
+
+        return profissional;
     }
 }

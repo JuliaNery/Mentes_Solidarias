@@ -8,6 +8,7 @@ import com.globalsolution.mentessolidarias.entities.endereco.Endereco;
 import com.globalsolution.mentessolidarias.entities.usuario.UsuarioEntity;
 import com.globalsolution.mentessolidarias.entities.usuario.agenda.AgendaEntity;
 import com.globalsolution.mentessolidarias.repositories.usuario.AgendaRepository;
+import com.globalsolution.mentessolidarias.repositories.usuario.ProfissionalRepository;
 import com.globalsolution.mentessolidarias.repositories.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +21,17 @@ public class ValidacaoAgenda {
     @Autowired
     private AgendaRepository agendaRepository;
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private ProfissionalRepository profissionalRepository;
 
     public List<DadosDetalhamentoAgenda> cadastrar(List<DadosCadastroAgenda> dados){
 
-        var usuario = usuarioRepository.getReferenceById(dados.get(1).cpf());
+        var profissional = profissionalRepository.getReferenceById(dados.get(1).cpf());
             List<AgendaEntity> agendas = new ArrayList<>();
         for (DadosCadastroAgenda dado : dados){
              agendas.add(AgendaEntity.builder()
                              .diaSemana(dado.diaSemana())
-                             .usuario(usuario)
+                             .horario(dado.horario())
+                             .profissional(profissional)
                      .build());
         }
         List<DadosDetalhamentoAgenda> dto = new ArrayList<>();
