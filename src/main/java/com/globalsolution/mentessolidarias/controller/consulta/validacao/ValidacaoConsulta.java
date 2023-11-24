@@ -7,7 +7,6 @@ import com.globalsolution.mentessolidarias.entities.enuns.TipoUsuario;
 import com.globalsolution.mentessolidarias.entities.usuario.profissional.ProfissionalEntity;
 import com.globalsolution.mentessolidarias.repositories.consulta.ConsultaRepository;
 import com.globalsolution.mentessolidarias.repositories.usuario.AgendaRepository;
-import com.globalsolution.mentessolidarias.repositories.usuario.HorarioRepository;
 import com.globalsolution.mentessolidarias.repositories.usuario.PacienteRepository;
 import com.globalsolution.mentessolidarias.repositories.usuario.ProfissionalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,7 @@ public class ValidacaoConsulta {
     @Autowired
     private ProfissionalRepository profissionalRepository;
 
-    @Autowired
-    private HorarioRepository horarioRepository;
+
     @Autowired
     private AgendaRepository agendaRepository;
 
